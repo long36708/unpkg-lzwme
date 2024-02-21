@@ -1,7 +1,7 @@
 import url from 'url';
 import https from 'https';
 import gunzip from 'gunzip-maybe';
-import LRUCache from 'lru-cache';
+import { LRUCache } from 'lru-cache';
 
 import bufferStream from './bufferStream.js';
 
@@ -82,7 +82,7 @@ async function fetchPackageInfo(packageName, log) {
       return JSON.parse(value);
     });
   }
-  
+
   if (res.statusCode === 404) {
     cache.set(cacheKey, notFound, 5 * oneMinute);
     return null;
