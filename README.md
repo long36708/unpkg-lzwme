@@ -15,7 +15,7 @@
 prepare:
 
 ```bash
-git clone https://github.com/renxia/unpkg.git
+git clone https://github.com/lzwme/unpkg.git
 cd unpkg
 pnpm i
 cp .env.sample .env.local # and edit the env.local config for local development
@@ -46,6 +46,13 @@ cd package
 npm i --omit dev
 # pnpm i -P
 pm2 -n unpkg start.js
+```
+
+## With Docker
+
+```bash
+docker pull lzwme/unpkg
+docker run -d -p 8080:8080 -e NPM_REGISTRY_URL=https://registry.npmjs.org -e ORGIN=* lzwme/unpkg
 ```
 
 ## Configuration with `.env[.prod|.local]`

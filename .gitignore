@@ -13,3 +13,5 @@ npm-debug.log*
 /service-account-staging.json
 /service-account.json
 *.tgz
+/tmp
+/cache
