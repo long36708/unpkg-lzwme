@@ -1,5 +1,6 @@
 import url from 'url';
 import https from 'https';
+import http from 'http';
 import gunzip from 'gunzip-maybe';
 import { LRUCache } from 'lru-cache';
 
@@ -37,7 +38,12 @@ const notFound = '';
 
 function get(options) {
   return new Promise((accept, reject) => {
-    https.get(options, accept).on('error', reject);
+    if (npmRegistryURL.startsWith('http://')) {
+      delete options.agent;
+      http.get(options, accept).on('error', reject);
+    } else {
+      https.get(options, accept).on('error', reject);
+    }
   });
 }
 
