@@ -8,7 +8,7 @@
 #   &&  npx @lzwme/fed-lint-helper rm -f "node_modules/**/{license,LICENSE,README.md,readme.md,.*,*.d.ts,*.flow,*.map}"
 
 FROM node:18-alpine As producton
-LABEL maintainer="renxia <lzwy0820@qq.com>"
+LABEL maintainer="longmo <longmo@qq.com>"
 
 WORKDIR /app
 

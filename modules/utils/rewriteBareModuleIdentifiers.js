@@ -2,7 +2,7 @@ import babel from '@babel/core';
 
 import unpkgRewrite from '../plugins/unpkgRewrite.js';
 
-const origin = process.env.ORIGIN || 'https://unpkg.com';
+const origin = process.env.ORIGIN || 'https://unpkg-longmo.com';
 
 export default function rewriteBareModuleIdentifiers(code, packageConfig) {
   const dependencies = Object.assign(

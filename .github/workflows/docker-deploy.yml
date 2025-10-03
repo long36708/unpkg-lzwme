@@ -42,7 +42,7 @@ jobs:
         cp package.json tmp
         cd tmp
         npm install --omit dev
-        pnpm dlx @lzwme/fed-lint-helper rm -f "node_modules/**/{license,LICENSE,README.md,readme.md,.*,*.d.ts,*.flow,*.map}"
+        pnpm dlx @lzwme/fed-lint-helper rm -f "node_modules/**/{license,LICENSE,README.md,README.EN.md,readme.md,.*,*.d.ts,*.flow,*.map}"
 
     # -
     #   name: Set up QEMU

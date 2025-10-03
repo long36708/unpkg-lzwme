@@ -1,44 +1,45 @@
-# UNPKG (fork)
+# UNPKG (中文版)
 
-**The goals of this fork are:**
+**此分支的目标是:**
 
-* Make it easier to self-host Unpkg.
-* Keep it upstream compatible.
-* Keep dependencies up to date.
-* Make no functional changes or add new features.
+* 更易于自托管 Unpkg
+* 保持与上游兼容
+* 保持依赖项更新
+* 不进行功能更改或添加新功能
+
 ------
 
-[UNPKG](https://unpkg.com) is a fast, global [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network) for everything on [npm](https://www.npmjs.com/).
+[UNPKG](https://unpkg.com) 是一个快速、全球性的[内容分发网络](https://en.wikipedia.org/wiki/Content_delivery_network)，提供 npm 上的所有内容。
 
-## Development
+## 开发
 
-prepare:
+准备工作:
 
 ```bash
 git clone https://github.com/lzwme/unpkg.git
 cd unpkg
 pnpm i
-cp .env.sample .env.local # and edit the env.local config for local development
+cp .env.sample .env.local # 编辑 env.local 配置用于本地开发
 ```
 
-dev:
+开发模式:
 
 ```bash
 pnpm watch
 pnpm serve
 ```
 
-## Build and deploy
+## 构建和部署
 
 ```bash
-cp .env.sample .env.prod # and edit the env.prod config for production
-set NODE_ENV=production # or staging
+cp .env.sample .env.prod # 编辑 env.prod 配置用于生产环境
+set NODE_ENV=production # 或 staging
 pnpm build
 pnpm pack
 ```
 
-A file will be generated like `unpkg-<version>.tgz`.
-Deploy it in your server with pm2:
+将会生成一个类似 `unpkg-<version>.tgz` 的文件。
+使用 pm2 在您的服务器上部署:
 
 ```bash
 tar zxvf unpkg-<version>.tgz
@@ -48,30 +49,30 @@ npm i --omit dev
 pm2 -n unpkg start.js
 ```
 
-## With Docker
+## 使用 Docker
 
 ```bash
 docker pull lzwme/unpkg
 docker run -d -p 8080:8080 -e NPM_REGISTRY_URL=https://registry.npmjs.org -e ORGIN=* lzwme/unpkg
 ```
 
-## Configuration with `.env[.prod|.local]`
+## 使用 `.env[.prod|.local]` 配置
 
-Learn more from the file [.env.sample](./.env.sample).
+更多详情请查看 [.env.sample](./.env.sample) 文件。
 
 ```yaml
-# config for private registry url
+# 私有 registry url 配置
 NPM_REGISTRY_URL=https://registry.npmjs.org
 
-# your unpkg website url
+# 您的 unpkg 网站 url
 ORIGIN=https://npmcdn.lzw.me
-# port to listen on. default 8080
+# 监听端口，默认为 8080
 PORT=8080
 
-# enableDebugging
+# 启用调试
 # DEBUG=1
 
-# Google Analytics MEASUREMENT_ID. your can set empty to disable it.
+# Google Analytics MEASUREMENT_ID，可以设置为空来禁用它
 GTAG_MEASUREMENT_ID=UA-140352188-1
 
 # ENABLE_CLOUDFLARE=1
@@ -79,10 +80,21 @@ GTAG_MEASUREMENT_ID=UA-140352188-1
 # CLOUDFLARE_KEY=test
 ```
 
-## Documentation
+## 环境变量说明
 
-Please visit [the UNPKG website](https://unpkg.com) to learn more about how to use it.
+- `ORIGIN`: 设置 unpkg 服务的基础 URL，默认为 `https://unpkg.com`，可用于自定义部署域名
+- `NPM_REGISTRY_URL`: npm registry 地址，默认为 `https://registry.npmjs.org`
+- `PORT`: 服务监听端口，默认为 8080
+- `DEBUG`: 启用调试模式
+- `GTAG_MEASUREMENT_ID`: Google Analytics ID，用于网站分析
+- `ENABLE_CLOUDFLARE`: 启用 Cloudflare 集成
+- `CLOUDFLARE_EMAIL`: Cloudflare 账户邮箱
+- `CLOUDFLARE_KEY`: Cloudflare API 密钥
 
-## Sponsors
+## 文档
 
-Our sponsors and backers are listed [in SPONSORS.md](SPONSORS.md).
+请访问 [UNPKG 官方网站](https://unpkg.com) 了解更多使用方法。
+
+## 赞助商
+
+我们的赞助商和捐助者列表在 [SPONSORS.md](SPONSORS.md) 文件中。
